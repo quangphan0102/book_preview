@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-3">
+    <p class="total-item fs-3 fw-bold text-dark"><%= books.length > 1 ? "Total items: " + books.length : "Total item: "  + books.length %></p>
+</div>
+
+<ul class="list-group container mt-3">
+    <% books.forEach(book => { %>
+        <li class="list-group-item mb-3">
+            <div class="row align-items-center">
+
+                <div class="col-md-6 col-lg-2">
+                    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn_code %>-M.jpg" alt="" class="item__image">
+                </div>
+        
+                <div class="col-md-6 col-lg-8">
+                    <div class="d-flex flex-column justify-items-center">
+                        <p class="item__title fs-5 fw-bold">
+                            <%= book.book_title %>
+                        </p>
+                        <p class="item__reviewer">
+                            Reviewer: <%= book.reviewer %>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-2 align-center">
+                    <a href="/edit/<%= book.id %>" class="btn btn-primary w-100">
+                        Edit
+                    </a>
+
+                    <form action="/remove/<%= book.id %>" method="post">
+                        <label for="delete-btn" class="btn btn-danger w-100 my-sm-2">
+                            Delete
+                        </label>
+                        <input id="delete-btn" type="submit" name="id" value="<%= book.id %>" hidden>
+                    </form>
+                </div>
+            </div>
+        </li>
+    <% }) %>
+</ul>
+
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,68 @@
+body { 
+    background-color: #BDE8CA;
+}
+
+.app-nav {
+    background: #0D7C66;
+}
+
+.navbar-brand {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 1.2em;
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.book-item img {
+    width: 300px;
+    height: 100%;
+}
+
+.card-img {
+    transition: 0.3s;
+}
+
+.card-img:hover {
+    transform: scale(101%);
+}
+
+.card-text {
+    font-size: 1.2em;
+    padding: 0.4em 1rem;
+}
+
+/* /add Page: */
+.new-text-area {
+    height: 250px;
+    resize: none;
+}
+
+.item__image {
+    width: 100%;
+}
+
+hr {
+    border-top: 1px solid rgb(138, 138, 138);
+}
+
+.search {
+    position: relative;
+}
+
+.nav-search {
+    position: relative;
+}
+
+.search-list {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 150%;
+    margin-right: 5px;
+}

@@ -1,0 +1,66 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container my-5">
+    <div class="row bg-light p-4 rounded-3">
+        <div class="col-md-4 col-lg-3">
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn_code %>-M.jpg" alt="" class="w-100">
+
+            <div class="d-flex flex-column justify-content-center mt-4">
+                <p class="author fw-light">
+                    <span class="fw-bold">Author:</span>
+                    <%= book.author %>
+                </p>
+                <p class="reviewer fw-light">
+                    <span class="fw-bold">Reviewer:</span>
+                    <%= book.reviewer %>
+                </p>
+                <p class="read-date fw-light">
+                    <span class="fw-bold">Read date:</span>
+                    <%= book.date_read %>
+                </p>
+                <p class="rating fw-light">
+                    <span class="fw-bold">Rating:</span>
+                    <%= book.rating %>/10
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-lg-9">
+            <div class="user-review">
+                <h3 class="fw-bold fs-3">My review:</h3>
+                <hr>
+                <p class="reviewing fs-5"><%= book.reviewing %></p>
+            </div>
+
+            <div class="user-notes">
+                <h3 class="fw-bold fs-3">My notes: (<%= notes.length %>)</h3>
+
+                <a href="/overview/<%= book.id %>/add-note" class="btn btn-success btn-lg">Create new note</a>
+
+                <hr>
+
+                <ul class="list-group">
+                    <% notes.forEach(note => { %>
+                        <li class="list-group-item fs-5 p-3">
+                            <div class="d-flex justify-content-between align-items-center flex-row">
+                                <p class="fs-6 m-0">
+                                    <%= note.note_text %>
+                                </p>
+                                <div class="btns d-flex flex-row">
+                                    <form action="/note/delete/<%= book.id %>&<%=note.id%>" method="POST">
+                                        <label for="delete-note" class="btn btn-danger">X</label>
+                                        <input type="submit" hidden id="delete-note" name="id" value="<%= note.id %>">
+                                    </form>
+
+                                    <a href="/note/edit/<%= book.id %>&<%= note.id %>" class="btn btn-primary ms-2">Edit</a>
+                                </div>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

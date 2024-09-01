@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+<h1 class="test"></h1>
+
+<div class="app container">
+    <% books.forEach(book => { %>
+        <div class="book-item__card row bg-light rounded-3 mt-5">
+            <div class="col-12 col-md-5 col-lg-4 p-0">
+                <a href="/overview/<%= book.id %>" class="img-link">
+                    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn_code %>-L.jpg" alt="" class="card-img w-100 h-100 rounded-3">
+                </a>
+            </div>
+
+            <div class="col-12 col-md-7 col-lg-8">
+                <div class="card__info card-body">
+                    <div class="card__title card-text">
+                        <span class="fw-bold">Title: </span>
+                        <%= book.book_title %>
+                    </div>
+                    <div class="card__isbn-code card-text">
+                        <span class="fw-bold">ISBN Code: </span>
+                        <%= book.isbn_code %>
+                    </div>
+                    <div class="card__author card-text">
+                        <span class="fw-bold">Author: </span>
+                        <%= book.author %>
+                    </div>
+                    <div class="card__book-intro card-text">
+                        <span class="fw-bold">Reviewing: </span>
+                        <%= book.reviewing %>
+                    </div>
+                    <div class="card_note card-text">
+                        <span class="fw-bold">Reviewer: </span>
+                        <%= book.reviewer %>
+                    </div>
+                    <div class="card_note card-text">
+                        <span class="fw-bold">Date read: </span>
+                        <%= book.date_read %>
+                    </div>
+                    <div class="card_note card-text">
+                        <span class="fw-bold">Rating in my personal: </span>
+                        <span class="fw-bold"><%= book.rating %></span>/10
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% })%>
+</div>
+
+<%- include("partials/footer.ejs") %>
